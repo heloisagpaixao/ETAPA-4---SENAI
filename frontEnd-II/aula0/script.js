@@ -59,14 +59,14 @@ function renderizarCardapio() {
     containerCardapio.appendChild(card);
   });
 }
-
 renderizarCardapio();
 
 cardapio[0].aplicarDesconto(20);
 renderizarCardapio();
 
-// ================================================== //
+// ========================================================================================== //
 
+// ========== PROGRAMAÇÃO ORIENTADA A OBJETOS ========== //
 class Bebida {
   constructor(nome, preco, volume) {
     this.nome = nome;
@@ -93,3 +93,33 @@ console.log("=== Bebidas Criadas ===");
 listaBebidas.forEach((b) => {
   console.log(`${b.descricao()} -> ${b.emLitros()}`);
 });
+
+// ========== DOCUMENT OBJECT MODEL ========== //
+const containerBebidas = document.querySelector("#lista-bebidas");
+
+function criarCardBebida(bebida) {
+  const card = document.createElement("div");
+  card.className = "card";
+
+  card.innerHTML = `
+    <h3>${bebida.nome}</h3>
+    <p>${bebida.emLitros()}</p>
+    <p>Preço: R$ ${bebida.preco.toFixed(2).replace(".", ",")}</p>
+  `;
+
+  // Evento de clique
+  card.addEventListener("click", () => {
+    alert(`Volume da bebida: ${bebida.emLitros()}`);
+  });
+
+  return card;
+}
+
+function renderizarBebidas() {
+  containerBebidas.innerHTML = "";
+  listaBebidas.forEach((bebida) => {
+    const card = criarCardBebida(bebida);
+    containerBebidas.appendChild(card);
+  });
+}
+renderizarBebidas();
