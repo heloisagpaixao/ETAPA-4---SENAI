@@ -33,7 +33,7 @@ const containerCardapio = document.querySelector("#cardapio");
 
 function criarCardPrato(prato) {
   const card = document.createElement("div");
-  card.className = "card";
+  card.className = "card-prato p-4 bg-white rounded-xl shadow-sm h-full";
 
   card.innerHTML = `
   <h3> ${prato.nome} </h3>

@@ -1,0 +1,10 @@
+"O que mudou? O que ficou igual?"
+
+    O que mudou foram as cores e o tamanho das fontes... Porém, a disposição dos elementos
+na tela(responsividade) continuou semelhante nos dois casos, podendo ser alterada para
+ser usada tanto em telas menores (mobiles) como em telas maiores (deskotps).
+    Dentro das duas opções, senti que as cores ficaram mais saturadas/vivas e as
+edições nas fontes do Tailwind, porém gostei mais da disposição/tamanho dos elementos na tela do Bootstrap.
+Eu escolheria, dentre as duas, o Tailwind por me permitir fazer mudanças mais específicas e pontuais,
+principalmente por permitir a integração do arquivo "input.css" para alterar a estilização
+juntamente ao arquivo "output.css" (gerado pelo próprio Tailwind).
