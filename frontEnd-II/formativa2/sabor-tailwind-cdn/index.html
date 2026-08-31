@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>FORMATIIVA 2 - Tailwind</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="flex justify-between bg-red-500 text-white p-4">
+      <h1 class="font-bold">TechFood Tawild</h1>
+
+      <div>
+        <a href="#">Contato</a>
+      </div>
+    </nav>
+
+    <!-- Cards -->
+    <main class="p-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-white p-4 rounded-lg flex flex-col">
+          <h2 class="font-bold">Produto 1</h2>
+          <p>Descrição do produto.</p>
+
+          <button class="mt-auto bg-red-500 text-white p-2 rounded-lg">
+            Comprar
+          </button>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg flex flex-col">
+          <h2 class="font-bold">Produto 2</h2>
+          <p>Descrição do produto.</p>
+
+          <button class="mt-auto bg-red-500 text-white p-2 rounded-lg">
+            Comprar
+          </button>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg flex flex-col">
+          <h2 class="font-bold">Produto 3</h2>
+          <p>Descrição do produto.</p>
+
+          <button class="mt-auto bg-red-500 text-white p-2 rounded-lg">
+            Comprar
+          </button>
+        </div>
+      </div>
+
+      <!-- Formulário -->
+      <form class="mt-6">
+        <input
+          type="text"
+          placeholder="Nome"
+          class="w-full border rounded-lg px-3 py-2 mb-3"
+        />
+
+        <input
+          type="email"
+          placeholder="E-mail"
+          class="w-full border rounded-lg px-3 py-2 mb-3"
+        />
+
+        <button class="bg-red-500 text-white px-3 py-2 rounded-lg">
+          Enviar
+        </button>
+      </form>
+    </main>
+  </body>
+</html>
