@@ -3,71 +3,75 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FORMATIVA 2 - Tailwind</title>
 
-    <title>FORMATIIVA 2 - Tailwind</title>
-
+    <!-- CDN Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./script.js" defer></script>
   </head>
 
   <body class="bg-gray-100">
     <!-- Navbar -->
     <nav class="flex justify-between bg-red-500 text-white p-4">
-      <h1 class="font-bold">TechFood Tawild</h1>
-
+      <h1 class="font-bold">TechFood Tailwind</h1>
       <div>
-        <a href="#">Contato</a>
+        <a href="#formulario">Contato</a>
       </div>
     </nav>
 
-    <!-- Cards -->
+    <!-- Main -->
     <main class="p-6">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div class="bg-white p-4 rounded-lg flex flex-col">
-          <h2 class="font-bold">Produto 1</h2>
-          <p>Descrição do produto.</p>
-
-          <button class="mt-auto bg-red-500 text-white p-2 rounded-lg">
-            Comprar
-          </button>
-        </div>
-
-        <div class="bg-white p-4 rounded-lg flex flex-col">
-          <h2 class="font-bold">Produto 2</h2>
-          <p>Descrição do produto.</p>
-
-          <button class="mt-auto bg-red-500 text-white p-2 rounded-lg">
-            Comprar
-          </button>
-        </div>
-
-        <div class="bg-white p-4 rounded-lg flex flex-col">
-          <h2 class="font-bold">Produto 3</h2>
-          <p>Descrição do produto.</p>
-
-          <button class="mt-auto bg-red-500 text-white p-2 rounded-lg">
-            Comprar
-          </button>
-        </div>
+      <!-- Grid para os Cards do JS -->
+      <div
+        id="cardapio"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+      >
+        <!-- O JS renderiza os cards aqui -->
       </div>
 
       <!-- Formulário -->
-      <form class="mt-6">
+      <form class="mt-6 bg-white p-4 rounded-lg shadow-sm" id="formulario">
         <input
           type="text"
-          placeholder="Nome"
+          placeholder="Seu nome completo"
           class="w-full border rounded-lg px-3 py-2 mb-3"
         />
 
         <input
           type="email"
-          placeholder="E-mail"
+          placeholder="seu@email.com"
           class="w-full border rounded-lg px-3 py-2 mb-3"
         />
 
-        <button class="bg-red-500 text-white px-3 py-2 rounded-lg">
+        <button
+          type="submit"
+          class="bg-red-500 text-white px-3 py-2 rounded-lg"
+        >
           Enviar
         </button>
       </form>
     </main>
+
+    <!-- Modal nativo feito em Tailwind (inicia oculto com 'hidden') -->
+    <div
+      id="modalPrato"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center hidden p-4"
+    >
+      <div class="bg-white rounded-lg p-6 max-w-md w-full shadow-lg">
+        <h2 id="modalNome" class="text-xl font-bold mb-1"></h2>
+        <span
+          id="modalCategoria"
+          class="inline-block bg-gray-200 text-gray-700 text-xs px-2 py-1 rounded mb-3"
+        ></span>
+        <p id="modalDescricao" class="text-gray-600 mb-4"></p>
+        <p id="modalPreco" class="text-lg font-bold text-green-600 mb-4"></p>
+        <button
+          id="btnFecharModal"
+          class="w-full bg-gray-500 text-white py-2 rounded-lg hover:bg-gray-600"
+        >
+          Fechar
+        </button>
+      </div>
+    </div>
   </body>
 </html>

@@ -33,27 +33,32 @@ const cardapio = [
 ];
 
 const containerCardapio = document.querySelector("#cardapio");
-const modal = document.querySelector("#modalPrato");
+const modalElement = document.querySelector("#modalPrato");
+const modalBootstrap = new bootstrap.Modal(modalElement);
 
 function criarCardPrato(prato) {
-  const card = document.createElement("div");
-  card.className = "bg-white p-4 rounded-lg flex flex-col";
+  const col = document.createElement("div");
+  col.className = "col-12 col-md-6 col-lg-4";
 
-  card.innerHTML = `
-    <h2 class="font-bold text-lg">${prato.nome}</h2>
-    <p class="text-gray-500 text-sm mb-1">${prato.categoria}</p>
-    <p class="text-green-600 font-bold mb-4">${prato.formatarPreco()}</p>
-    
-    <button class="mt-auto bg-red-500 text-white p-2 rounded-lg hover:bg-red-600 btn-detalhes">
-      Ver detalhes
-    </button>
+  col.innerHTML = `
+    <article class="card h-100 shadow-sm">
+      <div class="card-body d-flex flex-column">
+        <h2 class="card-title h5 fw-bold">${prato.nome}</h2>
+        <p class="card-text text-muted small">${prato.categoria}</p>
+        <p class="card-text text-success fw-bold fs-5">${prato.formatarPreco()}</p>
+      </div>
+      <div class="card-footer bg-transparent border-top-0 pb-3">
+        <button class="btn btn-danger w-100 mt-auto btn-detalhes">
+          Ver detalhes
+        </button>
+      </div>
+    </article>
   `;
 
-  // Adiciona o evento para abrir o modal com as informações do prato
-  const btn = card.querySelector(".btn-detalhes");
+  const btn = col.querySelector(".btn-detalhes");
   btn.addEventListener("click", () => abrirModal(prato));
 
-  return card;
+  return col;
 }
 
 function abrirModal(prato) {
@@ -62,11 +67,7 @@ function abrirModal(prato) {
   document.getElementById("modalPreco").textContent = prato.formatarPreco();
   document.getElementById("modalDescricao").textContent = prato.descricao;
 
-  modal.classList.remove("hidden");
-}
-
-function fecharModal() {
-  modal.classList.add("hidden");
+  modalBootstrap.show();
 }
 
 function renderizarCardapio() {
@@ -75,10 +76,5 @@ function renderizarCardapio() {
     containerCardapio.appendChild(criarCardPrato(prato));
   });
 }
-
-// Evento para fechar o modal
-document
-  .getElementById("btnFecharModal")
-  .addEventListener("click", fecharModal);
 
 renderizarCardapio();

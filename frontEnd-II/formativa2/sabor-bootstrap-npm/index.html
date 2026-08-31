@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FORMATIVA 2 - Bootstrap</title>
+    <link
+      rel="stylesheet"
+      href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+  </head>
+
+  <body class="bg-light">
+    <!-- Navbar com Hambúrguer (navbar-toggler) -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-danger px-3">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="#">TechFood Bootstrap</a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarContent"
+          aria-controls="navbarContent"
+          aria-expanded="false"
+          aria-label="Alternar navegação"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarContent"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#formulario">Contato</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main -->
+    <main class="container py-4">
+      <!-- Grid container -->
+      <div id="cardapio" class="row g-4">
+        <!-- O JS injeta colunas col-12 col-md-6 col-lg-4 aqui -->
+      </div>
+
+      <!-- Formulário com form-label e form-control -->
+      <form class="mt-5 bg-white p-4 rounded-3 shadow-sm" id="formulario">
+        <div class="mb-3">
+          <label for="nome" class="form-label fw-bold">Nome</label>
+          <input
+            type="text"
+            id="nome"
+            class="form-control"
+            placeholder="Seu nome completo"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label fw-bold">E-mail</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            placeholder="seu@email.com"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-danger px-4">Enviar</button>
+      </form>
+    </main>
+
+    <!-- Modal Bootstrap -->
+    <div class="modal fade" id="modalPrato" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="modalNome"></h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Fechar"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <span id="modalCategoria" class="badge bg-secondary mb-2"></span>
+            <p id="modalDescricao" class="text-secondary"></p>
+            <p id="modalPreco" class="fs-5 fw-bold text-success m-0"></p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary w-100"
+              data-bs-dismiss="modal"
+            >
+              Fechar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bundle local via JS (Vite/Webpack/Parcel) -->
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
