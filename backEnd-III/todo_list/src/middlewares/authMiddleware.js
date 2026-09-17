@@ -16,7 +16,6 @@ function authMiddleware(req, res, next) {
     return res.status(401).json({ error: "Token mal formatado" });
   }
   jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-    
     if (err) {
       return res.status(401).json({ error: "Token inválido ou expirado" });
     }
