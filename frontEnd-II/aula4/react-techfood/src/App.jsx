@@ -5,13 +5,24 @@ import Footer from "./components/Footer";
 import { cardapio } from "./data/cardapio";
 import "./App.css";
 
-
 function App() {
   const [totalItens, setTotalItens] = useState(0);
+  const [totalValor, setTotalValor] = useState(0);
 
-  function adicionarAoPedido(quantidade) {
+  function adicionarAoPedido(quantidade, preco) {
     setTotalItens(totalItens + quantidade);
+    setTotalValor(totalValor + quantidade * preco);
   }
+
+  function limparPedido() {
+    setTotalItens(0);
+    setTotalValor(0);
+  }
+
+  const totalFormatado = totalValor.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
 
   return (
     <main className="app">
@@ -29,6 +40,10 @@ function App() {
           />
         ))}
       </section>
+      <p> Total do Pedido: {totalFormatado} </p>
+      <button className="btn-limpar" type="button" onClick={limparPedido}>
+        Limpar pedido
+      </button>
       <Footer />
     </main>
   );

@@ -86,7 +86,10 @@
 }
 
 .btn-adicionar,
-.btn-secundario {
+.btn-secundario,
+.btn-curtir,
+.btn-esconder,
+.btn-limpar {
   border: none;
   border-radius: 8px;
   padding: 10px;
@@ -100,6 +103,31 @@
 .btn-adicionar:hover {
   background: #b80023;
 }
+
+.btn-curtir {
+  background: #22b700;
+  color: #fff;
+}
+.btn-curtir:hover {
+  background: #298900;
+}
+
+.btn-esconder {
+  background: #0077b7;
+  color: #fff;
+}
+.btn-esconder:hover {
+  background: #000089;
+}
+
+.btn-limpar {
+  background: #e4002b;
+  color: #fff;
+}
+.btn-limpar:hover {
+  background: #b80023;
+}
+
 .btn-secundario {
   background: #f1f1f4;
   color: #333;

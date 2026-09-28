@@ -34,4 +34,11 @@ export const cardapio = [
     categoria: "Aperitivo",
     descricao: "Deliciosamente recheada com frango e catupiry de primeira.",
   },
+  {
+    id: 6,
+    nome: "Pão de Queijo",
+    preco: 3,
+    categoria: "Aperitivo",
+    descricao: "Feito com queijo mineiro e acompanhado com doce de leite caseiro.",
+  },
 ];

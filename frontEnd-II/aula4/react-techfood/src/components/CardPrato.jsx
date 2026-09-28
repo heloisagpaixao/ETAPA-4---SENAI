@@ -2,6 +2,8 @@ import { useState } from "react";
 
 function CardPrato({ nome, preco, descricao, categoria, onAdicionar }) {
   const [quantidade, setQuantidade] = useState(1);
+  const [curtidas, setCurtidas] = useState(0);
+  const [mostrarDescricao, setMostrarDescricao] = useState(false);
 
   const precoFormatado = preco.toLocaleString("pt-BR", {
     style: "currency",
@@ -15,12 +17,22 @@ function CardPrato({ nome, preco, descricao, categoria, onAdicionar }) {
   }
 
   function aumentar() {
-    setQuantidade(quantidade + 1);
+    if (quantidade < 10) {
+      setQuantidade(quantidade + 1);
+    }
   }
 
   function adicionar() {
-    onAdicionar(quantidade);
+    onAdicionar(quantidade, preco);
     setQuantidade(1);
+  }
+
+  function curtir() {
+    setCurtidas(curtidas + 1);
+  }
+
+  function alternarDescricao() {
+    setMostrarDescricao(!mostrarDescricao);
   }
 
   return (
@@ -31,16 +43,46 @@ function CardPrato({ nome, preco, descricao, categoria, onAdicionar }) {
         {categoria === "Sobremesa" ? "🍰" : ""}
         {nome}{" "}
       </h2>
-      <p> {descricao} </p>
+
+      <button
+        className="btn-esconder"
+        type="button"
+        onClick={alternarDescricao}
+      >
+        {" "}
+        {mostrarDescricao ? "Esconder descrição" : "Ver descrição"}
+      </button>
+      {mostrarDescricao && <p className="descricao"> {descricao} </p>}
+
       <p className="preco"> {precoFormatado}</p>
       <div className="quantidade">
-      <button type="button" onClick={diminuir} aria-label={`Diminuir quantidade de ${nome}.`}> - </button>
-      <span> {quantidade} </span>
-      <button type="button" onClick={aumentar} aria-label={`Aumentar quantidade de ${nome}.`}> + </button>
+        <button
+          type="button"
+          onClick={diminuir}
+          aria-label={`Diminuir quantidade de ${nome}.`}
+        >
+          {" "}
+          -{" "}
+        </button>
+        <span> {quantidade} </span>
+        <button
+          type="button"
+          onClick={aumentar}
+          aria-label={`Aumentar quantidade de ${nome}.`}
+        >
+          {" "}
+          +{" "}
+        </button>
       </div>
 
-<button type="button" className="btn-adicionar" onClick={adicionar}> Adicionar ao pedido </button>
-
+      <button type="button" className="btn-adicionar" onClick={adicionar}>
+        {" "}
+        Adicionar ao pedido{" "}
+      </button>
+      <button type="button" className="btn-curtir" onClick={curtir}>
+        {" "}
+        ❤︎ {curtidas}{" "}
+      </button>
     </article>
   );
 }
