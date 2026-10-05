@@ -4,6 +4,7 @@ import Selo from "./Selo";
 function CardPrato({
   nome,
   preco,
+  precoPromocional,
   descricao,
   categoria,
   vegetariano = false,
@@ -16,10 +17,13 @@ function CardPrato({
   const [curtidas, setCurtidas] = useState(0);
   const [mostrarDescricao, setMostrarDescricao] = useState(false);
 
-  const precoFormatado = preco.toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-  });
+  const formatarPreco = (valor) =>
+    valor.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+
+  const precoAtual = precoPromocional || preco;
 
   function diminuir() {
     if (quantidade > 1) {
@@ -34,7 +38,7 @@ function CardPrato({
   }
 
   function adicionar() {
-    onAdicionar(quantidade, preco);
+    onAdicionar(quantidade, precoAtual);
     setQuantidade(1);
   }
 
@@ -50,17 +54,16 @@ function CardPrato({
     <article className={destaque ? "card-prato destaque" : "card-prato"}>
       <span className="categoria"> {categoria} </span>
       <h2>
-        {" "}
         {categoria === "Sobremesa" ? "🍰" : ""}
-        {nome}{" "}
+        {nome}
       </h2>
 
-      {/*SELOS*/}
+      {/* SELOS */}
       <div className="selos">
         {destaque && <Selo texto="Destaque" tipo="destaque" />}
         {vegetariano && <Selo texto="Vegetariano" tipo="vegetariano" />}
         {picante && <Selo texto="Picante" tipo="picante" />}
-        {disponivel && <Selo texto="Esgotado" tipo="esgotado" />}
+        {!disponivel && <Selo texto="Esgotado" tipo="esgotado" />}
       </div>
 
       <button
@@ -68,12 +71,22 @@ function CardPrato({
         type="button"
         onClick={alternarDescricao}
       >
-        {" "}
         {mostrarDescricao ? "Esconder descrição" : "Ver descrição"}
       </button>
       {mostrarDescricao && <p className="descricao"> {descricao} </p>}
 
-      <p className="preco"> {precoFormatado}</p>
+      <p className="preco">
+        {precoPromocional ? (
+          <>
+            <s className="preco-antigo">{formatarPreco(preco)}</s>{" "}
+            <span className="preco-promocional">
+              {formatarPreco(precoPromocional)}
+            </span>
+          </>
+        ) : (
+          formatarPreco(preco)
+        )}
+      </p>
 
       {disponivel ? (
         <>
@@ -83,8 +96,7 @@ function CardPrato({
               onClick={diminuir}
               aria-label={`Diminuir quantidade de ${nome}.`}
             >
-              {" "}
-              -{" "}
+              -
             </button>
             <span> {quantidade} </span>
             <button
@@ -92,25 +104,22 @@ function CardPrato({
               onClick={aumentar}
               aria-label={`Aumentar quantidade de ${nome}.`}
             >
-              {" "}
-              +{" "}
+              +
             </button>
           </div>
 
           <button type="button" className="btn-adicionar" onClick={adicionar}>
-            {" "}
-            Adicionar ao pedido{" "}
+            Adicionar ao pedido
           </button>
         </>
       ) : (
         <button type="button" className="btn-indisponivel" disabled>
-          Indisponível.{" "}
+          Indisponível.
         </button>
       )}
 
       <button type="button" className="btn-curtir" onClick={curtir}>
-        {" "}
-        ❤︎ {curtidas}{" "}
+        ❤︎ {curtidas}
       </button>
     </article>
   );

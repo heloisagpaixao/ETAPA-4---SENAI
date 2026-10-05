@@ -5,7 +5,13 @@ import Footer from "./components/Footer";
 import { cardapio } from "./data/cardapio";
 import "./App.css";
 
-const categorias = ["Prato Principal", "Sobremesa", "Aperitivo", "Bebida"];
+const categorias = [
+  "Entrada",
+  "Prato Principal",
+  "Sobremesa",
+  "Aperitivo",
+  "Bebida",
+];
 
 function App() {
   const [totalItens, setTotalItens] = useState(0);
