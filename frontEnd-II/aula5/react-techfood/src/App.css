@@ -112,14 +112,6 @@
   background: #298900;
 }
 
-.btn-esconder {
-  background: #0077b7;
-  color: #fff;
-}
-.btn-esconder:hover {
-  background: #000089;
-}
-
 .btn-limpar {
   background: #e4002b;
   color: #fff;
@@ -138,4 +130,65 @@
   margin-top: 40px;
   color: #999;
   font-size: 0.85rem;
+}
+
+/* ---------- Aula 5: seções, selos e condicionais ---------- */
+.secao {
+  margin-bottom: 32px;
+}
+.secao h2 {
+  font-size: 1.3rem;
+  margin: 0 0 12px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #e4002b;
+}
+.card-prato h3 {
+  font-size: 1.15rem;
+  margin: 0;
+}
+.card-prato.destaque {
+  border: 2px solid #e4002b;
+}
+.selos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-height: 22px;
+}
+.selo {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #f1f1f4;
+  color: #333;
+}
+.selo-destaque {
+  background: #e4002b;
+  color: #fff;
+}
+.selo-veg {
+  background: #e9f5ec;
+  color: #1b5e20;
+}
+.selo-esgotado {
+  background: #1a1a1a;
+  color: #fff;
+}
+.btn-indisponivel {
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  font-weight: 700;
+  background: #ddd;
+  color: #777;
+  cursor: not-allowed;
+}
+.vazio {
+  color: #888;
+}
+.preco-antigo {
+  color: #999;
+  font-weight: 400;
+  margin-right: 6px;
 }
